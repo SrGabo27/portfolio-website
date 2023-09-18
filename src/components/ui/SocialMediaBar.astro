@@ -4,11 +4,34 @@ import { IconLinkedin } from "./icons/IconLinkedin";
 ---
 
 <div
-	class="flex flex-col gap-4 justify-center items-center fixed left-0 bottom-0 px-16"
+	class="flex flex-col justify-between items-center fixed left-0 top-[150px] h-full px-16"
 >
-	<IconGithub client:only="react" />
+	<nav class="flex flex-col gap-4">
+		<div class="nav__item"></div>
+		<div class="nav__item filled"></div>
+		<div class="nav__item"></div>
+	</nav>
 
-	<IconLinkedin client:only="react" />
+	<div class="flex flex-col items-center gap-4">
+		<IconGithub client:only="react" />
 
-	<div class="h-[200px] w-[1px] bg-light-white"></div>
+		<IconLinkedin client:only="react" />
+
+		<div class="h-[400px] w-[1px] bg-light-white"></div>
+	</div>
 </div>
+
+<style>
+	.nav__item {
+		height: 32px; 
+		width: 32px;
+		border: solid 2px var(--light-white);
+		border-radius: 50%;
+		cursor: pointer;
+
+		&.filled {
+			border-color: var(--turquoise);
+			background-color: var(--turquoise);
+		}
+	}
+</style>

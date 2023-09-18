@@ -23,6 +23,8 @@ const { title } = Astro.props;
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@700&family=Roboto&display=swap" rel="stylesheet">
+
+		<script src="../shared/scripts/animate.ts" />
 	</head>
 
 	<header> 
@@ -48,10 +50,33 @@ const { title } = Astro.props;
 		--light-white-400: #8892b0;
 		--font-fira-code: "Fira Code";
 		--font-inter: "Inter";
-		
 	}
+
 
 	body {
 		background-color: var(--blue);
 	}
+
+	.typewrite{
+		/* This is the base class for the thrigger */
+	}
+
+	.typewrite__animate {
+		animation: typing 1s steps(40), blink 0.7s step-end ;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+
+	@keyframes typing {
+		from {
+			width: 0
+		}
+	}
+			
+	@keyframes blink {
+		0% {
+			border-right: 3px solid white;
+		}
+	}
+
 </style>
