@@ -1,0 +1,10 @@
+---
+interface Props {
+	customClass?: string
+}
+
+const {customClass} = Astro.props;
+---
+<div class={`max-w-[1640px] w-full h-full ${customClass}`}>
+	<slot />
+</div>

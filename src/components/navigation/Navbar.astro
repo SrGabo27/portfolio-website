@@ -1,0 +1,18 @@
+---
+const menu = [
+	{title: "About", url: "/"},
+	{title: "Experience", url: "/"},
+	{title: "Work", url: "/"},
+	{title: "Contact", url: "/"}
+]
+---
+
+<nav class="flex py-7 p-3 justify-end items-center bg-blue absolute w-full"> 
+		<ul>
+			{menu.map((item, index) => 
+				<li class="text-white font-fira inline mx-5 text-sm hover:text-turquoise cursor-pointer ease-in-out duration-150">
+					<span class="text-turquoise">0{index + 1}.</span>{item.title}
+				</li>
+			)}
+		</ul>
+</nav>

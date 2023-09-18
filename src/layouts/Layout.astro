@@ -1,0 +1,57 @@
+---
+import Navbar from '../components/navigation/Navbar.astro';
+import EmailBar from '../components/ui/EmailBar.astro';
+import SocialMediaBar from '../components/ui/SocialMediaBar.astro';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@700&family=Roboto&display=swap" rel="stylesheet">
+	</head>
+
+	<header> 
+		<Navbar />
+	</header>
+
+	<body class="relative">
+		<SocialMediaBar />
+
+		<div class="flex justify-center w-full">
+			<slot />
+		</div>
+
+		<EmailBar />
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--blue: #0a192f;
+		--turquoise: #64ffda;
+		--light-white: #ccd6f6;
+		--light-white-400: #8892b0;
+		--font-fira-code: "Fira Code";
+		--font-inter: "Inter";
+		
+	}
+
+	body {
+		background-color: var(--blue);
+	}
+</style>
