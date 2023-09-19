@@ -27,9 +27,9 @@ const removeScrollAnimation = (el: Element) => {
 
 const handleScrollAnimations = () => {
 	elements.forEach((el) => {
-		if (elementInView(el)) {
+		if (elementInView(el, 2)) {
 			addScrollAnimation(el);
-		} else if (elementOutOfView(el)) {
+		} else if (elementOutOfView(el, 2)) {
 			removeScrollAnimation(el);
 		}
 	});
