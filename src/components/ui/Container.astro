@@ -4,13 +4,14 @@ interface Props {
 	showHeader?: boolean
 	number?: string
 	title?: string
+	id?: string
 }
 
-const {customClass, showHeader = true, title, number} = Astro.props;
+const {customClass, showHeader = true, title, number, id} = Astro.props;
 ---
 
 
-<div class={`max-w-[1640px] w-full h-full ${customClass}`}>
+<section id={id} class={`max-w-[1640px] w-full h-full ${customClass}`}>
 	{showHeader && (
 		<div class="w-full">
 			<div class="flex items-center text-3xl gap-2 typewrite w-[400px]">
@@ -22,4 +23,4 @@ const {customClass, showHeader = true, title, number} = Astro.props;
 	)}
 
 	<slot />
-</div>
+</section>

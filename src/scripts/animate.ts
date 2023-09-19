@@ -1,6 +1,6 @@
 const elements = document.querySelectorAll(".typewrite");
 
-const elementInView = (el: Element, dividend = 1) => {
+export const elementInView = (el: Element, dividend = 1) => {
 	const elementTop = el.getBoundingClientRect().top;
 
 	return (
@@ -9,7 +9,7 @@ const elementInView = (el: Element, dividend = 1) => {
 	);
 };
 
-const elementOutOfView = (el: Element) => {
+export const elementOutOfView = (el: Element) => {
 	const elementTop = el.getBoundingClientRect().top;
 
 	return (

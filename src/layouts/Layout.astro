@@ -1,7 +1,7 @@
 ---
 import Navbar from '../components/navigation/Navbar.astro';
+import SideNav from '../components/navigation/SideNav.astro';
 import EmailBar from '../components/ui/EmailBar.astro';
-import SocialMediaBar from '../components/ui/SocialMediaBar.astro';
 
 interface Props {
 	title: string;
@@ -24,7 +24,8 @@ const { title } = Astro.props;
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@700&family=Roboto&display=swap" rel="stylesheet">
 
-		<script src="../shared/scripts/animate.ts" />
+		<script src="../scripts/animate.ts" />
+		<script src="../scripts/watchScroll.ts" />
 	</head>
 
 	<header> 
@@ -32,7 +33,7 @@ const { title } = Astro.props;
 	</header>
 
 	<body class="relative">
-		<SocialMediaBar />
+		<SideNav />
 
 		<div class="flex justify-center w-full">
 			<slot />

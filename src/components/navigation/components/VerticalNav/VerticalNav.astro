@@ -1,0 +1,49 @@
+---
+import { menu } from "../../content/menu";
+---
+
+<script>
+	const navItems = document.querySelectorAll(".nav__item");
+
+	const markItem = (idSelected: string) => {
+		navItems.forEach((item) => {
+			if (item.id === idSelected) item.classList.add("nav__item-filled");
+			if (item.id !== idSelected) item.classList.remove("nav__item-filled");
+		});
+	};
+
+	window.addEventListener("updateNav", (event) => {
+		const id = (event as CustomEvent).detail.anchor as string;
+
+		console.log(id);
+
+		markItem(id);
+	});
+</script>
+
+<nav class="flex flex-col gap-4">
+	{menu.map((item) => 
+		<div class="flex gap-3 items-center font-fira">
+			<div id={item.title} class="nav__item flex justify-center items-center font-bold text-white text-[10px]"></div>
+		
+			<p class="text-white">{item.title}</p>
+		</div>
+	)}
+</nav>
+
+<style>
+	.nav__item {
+		height: 32px;
+		width: 32px;
+		border: solid 2px var(--light-white);
+		border-radius: 50%;
+		cursor: pointer;
+		transition: border ease-in-out 0.4s;
+	}
+
+	.nav__item-filled {
+		border-color: var(--turquoise);
+		background-color: var(--blue);
+		border-width: 18px;
+	}
+</style>
