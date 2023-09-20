@@ -1,31 +1,38 @@
 ---
 import { menu } from "../../content/menu";
+
+interface Props {
+	customClass?: string
+	mode?: 'vertical' | 'horizontal'
+}
+
+const { customClass, mode = 'vertical' } = Astro.props;
 ---
 
 <script>
 	const navItems = document.querySelectorAll(".nav__item");
 
-	const markItem = (idSelected: string) => {
+	const markItem = (selectedId: string) => {
 		navItems.forEach((item) => {
-			if (item.id.toLowerCase() === idSelected) item.classList.add("nav__item-filled");
-			if (item.id.toLowerCase() !== idSelected) item.classList.remove("nav__item-filled");
+			if (item.id.toLowerCase() === selectedId) item.classList.add("nav__item-filled");
+			if (item.id.toLowerCase() !== selectedId) item.classList.remove("nav__item-filled");
 		});
 	};
 
 	window.addEventListener("updateNav", (event) => {
 		const id = (event as CustomEvent).detail.anchor as string;
-		console.log(id)
+
 		markItem(id);
 	});
 </script>
 
-<nav class="flex flex-col gap-4">
+<nav id="vertical-nav" class={`flex ${mode === 'vertical' && "flex-col"} gap-4 ${customClass}`}>
 	{menu.map((item) => 
 		<a href={`/#${item.title}`.toLowerCase()}>
 			<div class="flex gap-3 items-center font-fira">
 				<div id={item.title} class="nav__item flex justify-center items-center font-bold text-white text-[10px]"></div>
 			
-				<p class="text-white">{item.title}</p>
+				<p class="text-white md:block hidden text-sm">{item.title}</p>
 			</div>
 		</a>
 	)}
@@ -33,17 +40,19 @@ import { menu } from "../../content/menu";
 
 <style>
 	.nav__item {
-		height: 32px;
-		width: 32px;
 		border: solid 2px var(--light-white);
 		border-radius: 50%;
 		cursor: pointer;
-		transition: border linear 0.3s;
+		transition: border linear 0.1s, transform 0.2s linear;
+		
+		@apply md:h-[25px] md:w-[25px] h-[10px] w-[10px];
 	}
 
 	.nav__item-filled {
 		border-color: var(--turquoise);
 		background-color: var(--blue);
-		border-width: 18px;
+		transform: scale(1.2);
+
+		@apply md:border-[13px] border-[9px]
 	}
 </style>

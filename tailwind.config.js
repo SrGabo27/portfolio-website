@@ -3,6 +3,9 @@ module.exports = {
 	content: ["./src/**/*.{html,js,astro}"],
 	theme: {
 		extend: {
+			screens: {
+				xl: "1360px",
+			},
 			colors: {
 				turquoise: "var(--turquoise)",
 				blue: "var(--blue)",

@@ -14,13 +14,19 @@ const {customClass, showHeader = true, title, number, id} = Astro.props;
 <section id={id} class={`max-w-[1640px] w-full h-full ${customClass}`}>
 	{showHeader && (
 		<div id={id} class="w-full">
-			<div class="flex items-center text-3xl gap-2 typewrite w-[400px]">
+			<div class="flex title items-center gap-2 typewrite md:w-[390px] w-[300px]">
 				<span class="text-turquoise font-fira">{number}.</span>
 
-				<h2 class="text-light-white text-3xl font-fira">{title}</h2>
+				<h2 class="text-light-white font-fira">{title}</h2>
 			</div>
 		</div>
 	)}
 
 	<slot />
 </section>
+
+<style>
+	.title {
+		font-size: clamp(1rem, 5vw, 2rem);
+	}
+</style>
