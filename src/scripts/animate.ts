@@ -1,5 +1,7 @@
 const elements = document.querySelectorAll(".typewrite");
 
+console.log(elements);
+
 export const elementInView = (el: Element, dividend = 1) => {
 	const elementTop = el.getBoundingClientRect().top;
 
@@ -9,7 +11,7 @@ export const elementInView = (el: Element, dividend = 1) => {
 	);
 };
 
-export const elementOutOfView = (el: Element) => {
+export const elementOutOfView = (el: Element, dividend = 1) => {
 	const elementTop = el.getBoundingClientRect().top;
 
 	return (
@@ -18,7 +20,12 @@ export const elementOutOfView = (el: Element) => {
 };
 
 const addScrollAnimation = (el: Element) => {
-	el.classList.add("typewrite__animate");
+	const htmlEl = el as HTMLElement;
+
+	htmlEl.style.animation = "typing 1s steps(40), blink 0.7s step-end";
+	htmlEl.style.whiteSpace = "nowrap";
+	htmlEl.style.overflow = "hidden";
+	htmlEl.style.opacity = "1";
 };
 
 const removeScrollAnimation = (el: Element) => {
@@ -27,7 +34,7 @@ const removeScrollAnimation = (el: Element) => {
 
 const handleScrollAnimations = () => {
 	elements.forEach((el) => {
-		if (elementInView(el, 2)) {
+		if (elementInView(el, 1)) {
 			addScrollAnimation(el);
 		} else if (elementOutOfView(el, 2)) {
 			removeScrollAnimation(el);

@@ -1,75 +1,3 @@
----
-import Navbar from '../components/navigation/Navbar.astro';
-import SideNav from '../components/navigation/SideNav.astro';
-import EmailBar from '../components/ui/EmailBar.astro';
-
-interface Props {
-	title: string;
-}
-
-const { title } = Astro.props;
----
-
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="doon" type="image/svg+xml" href="/icons/logo.png" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@700&family=Roboto&display=swap" rel="stylesheet">
-
-		<link rel="stylesheet" href="../styles/animate.css">
-
-		<script src="../scripts/animate.ts" />
-		<script src="../scripts/watchScroll.ts" />
-	</head>
-
-	<header class="relative"> 
-		<Navbar />
-	</header>
-
-
-	<body class="relative">
-		<SideNav />
-
-		<div 
-			class="
-				flex justify-center 
-				w-full
-				px-8
-			"
-		>
-			<slot />
-		</div>
-
-		<EmailBar />
-
-	</body>
-</html>
-
-<style is:global>
-	html {
-		scroll-behavior: smooth;
-	}
-
-	:root {
-		--blue: #0a192f;
-		--turquoise: #64ffda;
-		--light-white: #ccd6f6;
-		--light-white-400: #8892b0;
-		--font-fira-code: "Fira Code";
-		--font-inter: "Inter";
-	}
-
-
-	body {
-		background-color: var(--blue);
-	}
-
 /* ============= Base animations keyframes ============== */
 @keyframes fade-down {
   from {
@@ -96,7 +24,7 @@ const { title } = Astro.props;
 @keyframes fade-left {
   from {
     opacity: 0;
-    transform: translateX(100px);
+    transform: translateX(-100px);
   }
   to {
     opacity: 1;
@@ -162,4 +90,3 @@ const { title } = Astro.props;
   }
 }
 /* ============= Typing animation =========================== */
-</style>

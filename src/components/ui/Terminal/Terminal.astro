@@ -1,0 +1,17 @@
+---
+interface Props {
+	customClass?: string
+}
+
+const { customClass } = Astro.props
+---
+<div class={`terminal bg-black p-5 w-full rounded-[15px] font-fira ${customClass}`}> 
+	<slot />
+</div>
+
+<style>
+	.init-terminal {
+		transition-duration: 0.5s;	
+		animation: hide 1s infinite 1s;
+	}
+</style>

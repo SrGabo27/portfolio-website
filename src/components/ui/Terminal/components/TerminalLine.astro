@@ -1,0 +1,12 @@
+---
+interface Props {
+	text: string
+	customClass?: string
+}
+
+const {text, customClass} = Astro.props;
+---
+
+<div class="terminal__line flex gap-2 text-white">
+		<span class="text-turquoise">></span> <span class="line typewrite w-[260px]" data-="hola">{text}</span>
+</div>

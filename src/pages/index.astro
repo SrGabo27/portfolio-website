@@ -1,12 +1,20 @@
 ---
-import About from '../components/pages/About/About.astro';
+import About from '../components/pages/home/About/About.astro';
 import Experience from '../components/pages/home/Experience/Experience.astro';
+import Terminal from '../components/ui/Terminal/Terminal.astro';
+import TerminalLine from '../components/ui/Terminal/components/TerminalLine.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Gabriel Alvarez">
+	<Terminal customClass='init-terminal absolute max-w-[800px] top-[300px]'>
+		<TerminalLine text="sudo ./portfolio.sh" />
+	</Terminal>
+
 	<main>
 		<About />			
+
 		<Experience />
 	</main>
 </Layout>
+

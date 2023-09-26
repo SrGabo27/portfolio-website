@@ -1,9 +1,10 @@
 ---
-import Container from "../../ui/Container.astro";
+import Container from "../../../ui/Container.astro";
+import Skills from "../Skills/Skills.astro";
 ---
 
-<Container customClass="flex items-center justify-center relative" showHeader={false} id="about">
-	<div class="flex flex-col justify-start gap-5">
+<Container customClass="flex flex-col gap-10 items-center justify-center relative" showHeader={false} id="about">
+	<div class="flex about flex-col justify-start gap-5 initial-fade-down">
 		<p class="hello typewrite text-turquoise font-fira w-[180px]">Hello World! I am</p>
 
 		<h1 class="font-inter text-light-white font-bold md:leading-[1.1] leading-[1.3]">
@@ -20,9 +21,19 @@ import Container from "../../ui/Container.astro";
 			I'm a Full Stack developer with a passion for creating innovative and impactful apps. I thrive on challenges and am constantly learning to improve my skills and knowledge.
 		</p>
 	</div>
+
+	<div class="w-full">
+		<Skills />
+	</div>
+
 </Container>
 
+
 <style>
+	.about {
+		transition: all 0.5s ease-in-out;
+	}
+
 	.title {
 		font-size: clamp(2.5rem, 6vw, 5rem);
 	}
