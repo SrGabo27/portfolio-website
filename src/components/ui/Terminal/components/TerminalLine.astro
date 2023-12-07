@@ -1,12 +1,47 @@
 ---
 interface Props {
-	text: string
+	text?: string;
 	customClass?: string
+	delay?: string; 
+	fadeOff?: boolean;
+	showIndicator?: boolean;
 }
 
-const {text, customClass} = Astro.props;
+const { text, customClass, delay = "0s", fadeOff = false, showIndicator = true} = Astro.props;
+
+const fadeOffDelay = `${Number(delay[0]) * 2}s`;
 ---
 
-<div class="terminal__line flex gap-2 text-white">
-		<span class="text-turquoise">></span> <span class="line typewrite w-[260px]" data-="hola">{text}</span>
+<div class=`terminal__line fade-off flex gap-2 text-white ${customClass}`>
+	{showIndicator &&
+		<span 
+			class="text-turquoise"
+		>
+			{'>'}
+		</span> 
+	}
+		
+	<span 
+			class="line typewrite w-[260px]" 
+			style=`--delay: ${delay}; --fade-off-delay: ${fadeOffDelay}`
+		>
+			<slot />  {text}
+	</span>
+	
 </div>
+
+<style>
+	.fade-off {
+		animation: fade-off 1s var(--fade-off-delay) ease-in-out forwards;
+	}
+
+	@keyframes fade-off {
+		from {
+			opacity: 1;
+		}
+
+		to {
+			opacity: 0;
+		}
+	}
+</style>

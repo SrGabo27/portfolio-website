@@ -3,6 +3,8 @@ import Navbar from '../components/navigation/Navbar.astro';
 import SideNav from '../components/navigation/SideNav.astro';
 import EmailBar from '../components/ui/EmailBar.astro';
 
+import "../styles/animate.css";
+
 interface Props {
 	title: string;
 }
@@ -21,8 +23,6 @@ const { title } = Astro.props;
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@700&family=Roboto&display=swap" rel="stylesheet" />
-
-		<link rel="stylesheet" href="../styles/animate.css" />
 
 		<script src="../scripts/animate.ts" />
 		<script src="../scripts/watchScroll.ts" />
@@ -69,97 +69,4 @@ const { title } = Astro.props;
 	body {
 		background-color: var(--blue);
 	}
-
-/* ============= Base animations keyframes ============== */
-@keyframes fade-down {
-  from {
-    opacity: 0;
-    transform: translateY(-100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fade-right {
-  from {
-    opacity: 0;
-    transform: translateX(-100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fade-left {
-  from {
-    opacity: 0;
-    transform: translateX(100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes hide {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 0;
-  }
-}
-/* ========================================================== */
-/* = Animations that automatic load after some defined time =  */
-.initial-fade-down {
-  animation:
-    fade-down 1s 1s,
-    hide 1s;
-}
-
-.initial-fade-right {
-  animation:
-    fade-right 1s 1s,
-    hide 1s;
-}
-
-.initial-fade-left {
-  animation:
-    fade-left 1s 1s,
-    hide 1s;
-}
-/* ========================================================== */
-/* ============= Typing animation =========================== */
-.typewrite {
-  /* All the elements that have this class and 
-*			a defined width will show the typing animation 
-*			on scroll 
-*		*/
-  opacity: 0;
-}
-
-.typewrite__animate {
-  animation:
-    typing 1s steps(40),
-    blink 0.7s step-end;
-  white-space: nowrap;
-  overflow: hidden;
-  opacity: 1;
-}
-
-@keyframes typing {
-  from {
-    width: 0;
-  }
-}
-
-@keyframes blink {
-  0% {
-    border-right: 3px solid white;
-  }
-}
-/* ============= Typing animation =========================== */
 </style>

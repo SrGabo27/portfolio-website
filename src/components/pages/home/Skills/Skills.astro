@@ -1,8 +1,48 @@
 ---
 import Terminal from "../../../ui/Terminal/Terminal.astro";
 import TerminalLine from "../../../ui/Terminal/components/TerminalLine.astro";
+
+//window emoji
+const emoji = "👋";
+
+const skills = [
+	{name: "Node.js", emoji: "🌱"},
+	{name: ".Net", emoji: "👋"},
+	{name: "FastApi"},
+	{name: "React.js"},
+	{name: "Angular"},
+	{name: "Ionic"},
+	{name: "Firebase"},
+	{name: "Azure"},
+];
+
+const firstColumn = skills.slice(0, Math.ceil(skills.length / 2));
+
+const secondColumn = skills.slice(Math.ceil(skills.length / 2), skills.length);
 ---
 
-<Terminal customClass="max-w-[500px] initial-fade-down">
-	<TerminalLine text="sudo ./portfolio.sh" />
+<Terminal customClass="initial-fade-down">
+		<TerminalLine delay="2s">
+			<span class="text-turquoise">Technologies: 💻</span>
+		</TerminalLine>
+
+	<div class="flex">
+
+	<div class="mt-3">
+	 { firstColumn.map((skill) => 
+		<TerminalLine showIndicator={false} customClass="w-[150px]" delay="2.5s"> 
+			<span class="text-turquoise">- </span> {skill.name} {skill.emoji}
+		</TerminalLine>)
+	 }
+	</div>
+
+	<div class="mt-3">
+	 { secondColumn.map((skill) => 
+		<TerminalLine showIndicator={false} customClass="w-[150px]" delay="2.5s"> 
+			<span class="text-turquoise">- </span> {skill.name}
+		</TerminalLine>)
+	 }
+	</div>
+
+	</div>
 </Terminal>

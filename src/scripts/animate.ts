@@ -22,10 +22,12 @@ export const elementOutOfView = (el: Element, dividend = 1) => {
 const addScrollAnimation = (el: Element) => {
 	const htmlEl = el as HTMLElement;
 
-	htmlEl.style.animation = "typing 1s steps(40), blink 0.7s step-end";
+	/*	htmlEl.style.animation = "typing 1s steps(40), blink 0.7s step-end";
 	htmlEl.style.whiteSpace = "nowrap";
 	htmlEl.style.overflow = "hidden";
-	htmlEl.style.opacity = "1";
+	htmlEl.style.opacity = "1";*/
+
+	htmlEl.classList.add("typewrite__animate");
 };
 
 const removeScrollAnimation = (el: Element) => {
