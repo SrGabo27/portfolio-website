@@ -2,9 +2,6 @@
 import Terminal from "../../../ui/Terminal/Terminal.astro";
 import TerminalLine from "../../../ui/Terminal/components/TerminalLine.astro";
 
-//window emoji
-const emoji = "👋";
-
 const skills = [
 	{name: "Node.js", emoji: "🌱"},
 	{name: ".Net", emoji: "👋"},
@@ -21,7 +18,7 @@ const firstColumn = skills.slice(0, Math.ceil(skills.length / 2));
 const secondColumn = skills.slice(Math.ceil(skills.length / 2), skills.length);
 ---
 
-<Terminal customClass="initial-fade-down">
+<Terminal customClass="initial-fade-down max-w-[400px]">
 		<TerminalLine delay="2s">
 			<span class="text-turquoise">Technologies: 💻</span>
 		</TerminalLine>
