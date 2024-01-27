@@ -1,8 +1,34 @@
 ---
 import Container from "../../../ui/Container.astro";
+import { experiences } from "./data/data"
+import { ExpansionPanel } from "../../../ui/ExpansionPanel/ExpansionPanel"
 ---
 
 <Container customClass="pt-[100px]" number="02" title="Where I’ve Worked" id="experience">
-	<div class="w-full mt-5">
+	<div class="w-full mt-5 pl-2">
+		<div class="flex flex-col gap-10">
+			{experiences.map((experience) => (
+				<ExpansionPanel title={experience.company} client:only="react">
+					<div class="flex flex-col mt-3">
+						<ul class="pl-2">
+							{experience.projects.map(project => (
+								<li class="balance text-light-white-400 max-w-3xl fade-down">
+									{project.description}
+								</li>
+
+								<br>
+							))}
+						</ul>
+					</div>
+				</ExpansionPanel>
+			))}
+		</div>
 	</div>
 </Container>
+
+<style>
+	.balance {
+		text-wrap: pretty;
+		font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+	}
+</style>

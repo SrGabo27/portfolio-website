@@ -1,6 +1,5 @@
 const elements = document.querySelectorAll(".typewrite");
-
-console.log(elements);
+const fadeElements = document.querySelectorAll("[class*='fade']");
 
 export const elementInView = (el: Element, dividend = 1) => {
 	const elementTop = el.getBoundingClientRect().top;
@@ -11,7 +10,7 @@ export const elementInView = (el: Element, dividend = 1) => {
 	);
 };
 
-export const elementOutOfView = (el: Element, dividend = 1) => {
+export const elementOutOfView = (el: Element) => {
 	const elementTop = el.getBoundingClientRect().top;
 
 	return (
@@ -21,11 +20,6 @@ export const elementOutOfView = (el: Element, dividend = 1) => {
 
 const addScrollAnimation = (el: Element) => {
 	const htmlEl = el as HTMLElement;
-
-	/*	htmlEl.style.animation = "typing 1s steps(40), blink 0.7s step-end";
-	htmlEl.style.whiteSpace = "nowrap";
-	htmlEl.style.overflow = "hidden";
-	htmlEl.style.opacity = "1";*/
 
 	htmlEl.classList.add("typewrite__animate");
 };
@@ -38,14 +32,27 @@ const handleScrollAnimations = () => {
 	elements.forEach((el) => {
 		if (elementInView(el, 1)) {
 			addScrollAnimation(el);
-		} else if (elementOutOfView(el, 2)) {
+		} else if (elementOutOfView(el)) {
 			removeScrollAnimation(el);
+		}
+	});
+};
+
+const handleFadeAnimations = () => {
+	fadeElements.forEach((el) => {
+		if (elementInView(el, 1)) {
+			if (el.classList.contains("fade-down"))
+				el.classList.add("init-fade-down");
+		} else if (elementOutOfView(el)) {
+			if (el.classList.contains("fade-down"))
+				el.classList.remove("init-fade-down");
 		}
 	});
 };
 
 window.addEventListener("scroll", () => {
 	handleScrollAnimations();
+	handleFadeAnimations();
 });
 
 window.addEventListener("load", () => {

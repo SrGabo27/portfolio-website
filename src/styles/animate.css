@@ -44,6 +44,11 @@
   }
 }
 /* ========================================================== */
+/* = Animations that load on scroll ========================= */
+.init-fade-down {
+  animation: fade-down 1s var(--delay) forwards;
+}
+/* ========================================================== */
 /* = Animations that automatic load after some defined time =  */
 .initial-fade-down {
   animation:
